@@ -1,19 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <style>
-        body { font-family: Arial, sans-serif; }
-        .slip { border: 2px solid #000; padding: 20px; width: 400px; margin: auto; }
+        /* Tetapan untuk PDF (Saiz A4, margin keliling 2cm) */
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body { 
+            font-family: Arial, sans-serif; 
+            font-size: 14px;
+        }
+        
+        .slip-container { 
+            border: 2px solid #000; 
+            padding: 30px; 
+            width: 100%;
+            max-width: 600px; /* Pastikan ia muat dalam skrin telefon bila dicetak ke PDF */
+            margin: auto; 
+        }
+
+        .tajuk {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .maklumat-pelajar p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        /* Gaya untuk Jadual Markah */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+
+        .markah-column {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div class="slip">
-        <h1>Slip Keputusan</h1>
-        <p>Nama: {{ nama }}</p>
-        <p>Kelas: {{ kelas }}</p>
-        <hr>
-        <p>Markah ASK: {{ ask }}</p>
-        <p>Markah RBT: {{ rbt }}</p>
+    <div class="slip-container">
+        
+        <div class="tajuk">
+            <h2>SLIP KEPUTUSAN PEPERIKSAAN</h2>
+        </div>
+        
+        <div class="maklumat-pelajar">
+            <p>NAMA: {{ nama }}</p>
+            <p>KELAS: {{ kelas }}</p>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>MATA PELAJARAN</th>
+                    <th style="width: 150px;">MARKAH</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Reka Bentuk dan Teknologi (RBT)</td>
+                    <td class="markah-column">{{ rbt }}</td>
+                </tr>
+                <tr>
+                    <td>Asas Sains Komputer (ASK)</td>
+                    <td class="markah-column">{{ ask }}</td>
+                </tr>
+                <tr>
+                    <td>Sejarah</td>
+                    <td class="markah-column">{{ sejarah }}</td>
+                </tr>
+                <tr>
+                    <td>Geografi</td>
+                    <td class="markah-column">{{ geografi }}</td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Islam</td>
+                    <td class="markah-column">{{ pendidikan_islam }}</td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Moral</td>
+                    <td class="markah-column">{{ moral }}</td>
+                </tr>
+                <tr>
+                    <td>Pendidikan Seni Visual</td>
+                    <td class="markah-column">{{ seni }}</td>
+                </tr>
+                <tr>
+                    <td>PJPK</td>
+                    <td class="markah-column">{{ pjpk }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-top: 40px;">
+            <p>Tandatangan Guru Kelas,</p>
+            <br><br>
+            <p>................................................</p>
+        </div>
+
     </div>
 </body>
 </html>
